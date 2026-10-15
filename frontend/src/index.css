@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-auditiq-bg text-auditiq-text font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom Webkit scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2D45;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2E75B6;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 12px rgba(16, 185, 129, 0.8); }
+}
+
+/* ─── Print Stylesheet ─── */
+@media print {
+  body {
+    background: white !important;
+    color: #1a1a1a !important;
+  }
+
+  /* Hide non-essential UI */
+  nav, .sidebar, .topbar, button, .no-print,
+  [class*="Sidebar"], [class*="Topbar"],
+  [class*="toast"], [class*="Toast"] {
+    display: none !important;
+  }
+
+  /* Reset layout */
+  main, [class*="PageWrapper"] {
+    margin: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Report styling for print */
+  .report-viewer {
+    background: white !important;
+    color: #1a1a1a !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure text is black */
+  h1, h2, h3, h4, h5, h6, p, li, td, th, span, div {
+    color: #1a1a1a !important;
+  }
+
+  /* Page breaks */
+  h1, h2 {
+    page-break-after: avoid;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+}
